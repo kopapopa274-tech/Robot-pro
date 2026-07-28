@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+
 export class ActionManager {
     constructor(agent) {
         this.agent = agent;
@@ -11,8 +13,8 @@ export class ActionManager {
         this.recent_action_counter = 0;
     }
 
-    async resumeAction(actionFn, timeout) {
-        return this._executeResume(actionFn, timeout);
+    async resumeAction(actionLabel = null, actionFn = null, timeout) {
+        return this._executeResume(actionLabel, actionFn, timeout);
     }
 
     async runAction(actionLabel, actionFn, { timeout, resume = false } = {}) {
